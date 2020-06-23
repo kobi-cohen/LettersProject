@@ -81,27 +81,29 @@ const list = [
   ['ן', n],
   ['ך', k],
   ['ם', m],
-  [' ', ''],
-  ['', ''],
+  [' ', null],
+  ['', null],
+  [null, null],
+  [undefined, null],
 ]
 let letters = new Map(list)
-
+let counter = 0
 makePray = () => {
-  let counter = 1
   nameArr = [...input.value.toUpperCase()]
   con.innerHTML = ''
   for (el of nameArr) {
+    if (el == ' ' || el == "'" || letters.has(el) == false) continue
+    counter++
     con.innerHTML +=
-      '<span>' +
-      counter +
-      '</span><div class="part"><span>' +
+      '<div class="part"><span>' +
       letters.get(el)[0] +
       '</span><br>' +
       letters.get(el) +
       '</div>'
-    counter++
   }
-  input.value = ''
+  if (counter == 0) con.innerHTML = 'אנא הקלד שם יהודי בשפה העברית בתיבת הטקסט'
+  input.value = '' // reset the text box
+  counter = 0 // reset the counter
 }
 
 btn.addEventListener('click', makePray)
