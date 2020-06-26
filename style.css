@@ -10,9 +10,19 @@ html {
   font-size: 62.5%;
 }
 .part {
-  border: 0.1rem solid black;
+  border: none;
+}
+.textWrapper {
+  border: 0.1rem black solid;
+  margin: 0;
+  padding: 0;
+  width: auto;
 }
 span {
   font-size: 1.5rem;
   color: blue;
+}
+.textWrapper > span {
+  font-size: 3rem;
+  color: rgb(70, 68, 68);
 }
