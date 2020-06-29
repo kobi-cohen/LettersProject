@@ -13,6 +13,8 @@ html {
   border: 0.1rem dotted black;
 }
 .textWrapper {
+  direction: rtl;
+  text-align: right;
   border: 0.1rem black solid;
   margin: 0;
   padding: 0;
