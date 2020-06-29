@@ -1,42 +1,64 @@
 //elements
 
-const input1 = document.getElementById('inputBox1')
-const btn = document.getElementById('btn')
-const con = document.getElementById('con')
-const div = document.createElement('div')
+const input1 = document.getElementById('inputBox1') // input name text
+const input2 = document.getElementById('inputBox2') // input name text
+const btn = document.getElementById('btn') // button
+const con = document.getElementById('con') // div content
+const div = document.createElement('div') //inner div content
 
 let letters = new Map(list)
-let flag = true
 
-// reset the text field and the arrays and throw an Alert message if wrong text
-reset = () => {
-  const tempNameArr = []
-  const finalNameArr = []
-  if (!flag) {
-    console.log('Wrong')
-    input1.value = ''
-  }
-  checkName(tempNameArr, finalNameArr)
+handler = () => {
+  if (input1.value && input2.value != '') {
+    let combine = input1.value + input2.value
+    checkName(combine)
+  } else error('חובה לקליד את שני השמות בשפה העברית בלבד')
+  input1.value = ''
+  input2.value = ''
 }
 
-//Check the name in the field
-checkName = (temp, final) => {
-  temp = [...input1.value]
+checkName = value => {
+  let final = []
+  let temp = [...value]
+
   for (ch of temp) {
-    if (letters.has(ch) || ch == "'") {
+    if (letters.has(ch)) {
       final.push(ch)
+    } else if (ch == "'") {
+      continue
     } else {
-      flag = false
-      reset()
+      error('שם הנפטר  שם האב שגויים - אנא הקלד שם בשפה העברית בלבד')
       break
     }
   }
   if (final.length > 0) {
-    console.log(final)
+    print(final)
   }
 }
 
-btn.addEventListener('click', reset) // button event click and call to function
+print = final => {
+  let value = null
+  con.innerHTML = ''
+  let neshama = 'נשמה'
+  let nArr = [...neshama]
+  console.log(final)
+  for (el of final) {
+    value = letters.get(el)
+    console.log(value)
+    con.innerHTML += '<div class="part">' + value + '</div>'
+  }
+  console.log(nArr)
+  for (elm of nArr) {
+    let v = letters.get(elm)
+    con.innerHTML += '<div class="part">' + v + '</div>'
+  }
+}
+error = msg => {
+  con.innerHTML = ''
+  console.log(msg)
+  alert(msg)
+}
+btn.addEventListener('click', handler) // button event click and call to function
 
 //created by Kobi Cohen - 2020
 //date : 23/06/2020

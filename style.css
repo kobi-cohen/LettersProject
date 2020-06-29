@@ -10,7 +10,7 @@ html {
   font-size: 62.5%;
 }
 .part {
-  border: none;
+  border: 0.1rem dotted black;
 }
 .textWrapper {
   border: 0.1rem black solid;
@@ -25,4 +25,11 @@ span {
 .textWrapper > span {
   font-size: 3rem;
   color: rgb(70, 68, 68);
+}
+
+.box {
+  border: 0.1rem solid black;
+  font-size: 2rem;
+  margin: 1rem;
+  padding: 1rem;
 }
