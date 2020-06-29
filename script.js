@@ -24,7 +24,7 @@ checkName = value => {
   for (ch of temp) {
     if (letters.has(ch)) {
       final.push(ch)
-    } else if (ch == "'") {
+    } else if (ch == "'" || ch == ' ') {
       continue
     } else {
       error('שם הנפטר  שם האב שגויים - אנא הקלד שם בשפה העברית בלבד')
