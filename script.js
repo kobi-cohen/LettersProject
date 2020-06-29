@@ -45,12 +45,14 @@ print = final => {
   for (el of final) {
     value = letters.get(el)
     console.log(value)
-    con.innerHTML += '<div class="part">' + value + '</div>'
+    con.innerHTML +=
+      '<span>' + value[0] + '</span><div class="part">' + value + '</div>'
   }
   console.log(nArr)
   for (elm of nArr) {
     let v = letters.get(elm)
-    con.innerHTML += '<div class="part">' + v + '</div>'
+    con.innerHTML +=
+      '<span>' + v[0] + '</span><div class="part">' + v + '</div>'
   }
 }
 error = msg => {
